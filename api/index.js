@@ -18,23 +18,32 @@ dotenv.config();
 
 mongoose
   .connect(process.env.MONGO_URL)
-  .then(() => {
-    console.log("✅ MongoDB is connected!");
-  })
-  .catch((e) => {
-    console.log(e);
-  });
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((e) => console.log("❌ MongoDB Error:", e));
 
 const __dirname = path.resolve();
 
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://mern-telemedicine-app.onrender.com",
+    ],
+    credentials: true,
+  })
+);
 
-// Middleware to serve static files
-app.use("/images", express.static(path.join(__dirname, "public/images")));
-app.use(express.static(path.join(__dirname, "/client/dist")));
+// Serve frontend build in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+  });
+}
 
 // Routes
 app.use("/mediclinic/auth", authRoutes);
