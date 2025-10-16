@@ -8,12 +8,8 @@ import {
 
 const router = express.Router();
 
-router.get("/getAllPayments", verifyToken, getAllPayments);
-router.get(
-  "/getPaymentByPatientID/patient/:patient_id",
-  verifyToken,
-  getPaymentByPatientID
-);
-router.post("/create-payment-intent", verifyToken, createPayment);
+router.get("/get", verifyToken, getAllPayments);
+router.get("/patient/:patient_id", verifyToken, getPaymentByPatientID);
+router.post("/create", verifyToken, createPayment);
 
 export default router;

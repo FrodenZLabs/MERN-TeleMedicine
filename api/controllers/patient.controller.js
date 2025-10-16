@@ -14,6 +14,7 @@ export const getAllPatients = async (request, response, next) => {
   const searchTerm = request.query.searchTerm || "";
 
   let patient_gender = request.query.patient_gender;
+
   // If no specific patient_gender is requested or 'all' is specified, fetch all patient_genders
   if (patient_gender === undefined || patient_gender === "All") {
     patient_gender = { $in: ["Male", "Female", "Other"] };
@@ -106,6 +107,7 @@ export const createPatient = async (request, response, next) => {
     contact_number,
     address,
     username, // Username for the new user
+    email, // Username for the new user
     password, // Password for the new user
     role = "patient", // Default role for the new user
   } = request.body;
@@ -143,9 +145,8 @@ export const createPatient = async (request, response, next) => {
 
     // Create a new user with hashed password
     const newUser = new User({
-      user_profile:
-        "https://imgs.search.brave.com/gV6Xy99WsNTWpgT2KUNxopKhP45u8QMrrL2DGi5HYxg/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc",
       username,
+      email,
       password: hashedPassword,
       role,
     });
@@ -181,7 +182,11 @@ export const createPatient = async (request, response, next) => {
         `Welcome, ${username}!\n\nThank you for signing up with Mediclinic Center. We are delighted to have you join us.\n\nAt Mediclinic Center, we strive to provide top-quality healthcare services to our patients. Should you have any questions or need assistance, please feel free to reach out.\n\nBest regards,\nThe Mediclinic Center Team`
       );
       // Respond with the new patient data
-      response.status(201).json(savedPatient);
+      response.status(201).json({
+        success: true,
+        message: "Patient has been successfully added.",
+        data: savedPatient,
+      });
     } catch (rollError) {
       // Error occurred while creating role-specific data
       await User.findByIdAndDelete(savedUser._id);
@@ -193,6 +198,8 @@ export const createPatient = async (request, response, next) => {
       );
     }
   } catch (error) {
+    console.log("Error: ", error);
+
     next(errorHandler(500, "Error creating patient and user"));
   }
 };
@@ -235,7 +242,13 @@ export const updatePatient = async (request, response, next) => {
       "Profile Update Confirmation",
       `Dear ${patient_firstName} ${patient_lastName}, your profile has been successfully updated. Please review your updated profile information to ensure everything is correct. If you have any questions or notice any discrepancies, please contact our support team. Thank you for keeping your information current.`
     );
-    response.status(200).json(updatedPatient);
+    response
+      .status(200)
+      .json({
+        success: true,
+        message: "Patient updated successfully",
+        data: updatedPatient,
+      });
   } catch (error) {
     next(errorHandler(500, "Error updating patient"));
   }

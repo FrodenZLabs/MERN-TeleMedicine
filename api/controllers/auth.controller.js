@@ -110,7 +110,9 @@ export const signup = async (request, response, next) => {
         "Welcome to Mediclinic Center!",
         `Welcome, ${username}!\n\nThank you for signing up with Mediclinic Center. We are delighted to have you join us.\n\nAt Mediclinic Center, we strive to provide top-quality healthcare services to our patients. Should you have any questions or need assistance, please feel free to reach out.\n\nBest regards,\nThe Mediclinic Center Team`
       );
-      response.status(201).json("User created successfully");
+      response
+        .status(201)
+        .json({ success: true, message: "User created successfully" });
     } catch (rollError) {
       // Error occurred while creating role-specific data
       await User.findByIdAndDelete(validUser._id);
@@ -200,6 +202,7 @@ export const login = async (request, response, next) => {
       .status(200)
       .cookie("access_token", token, { httpOnly: true })
       .json({
+        success: true,
         ...rest,
         patient_id: patientId,
         doctor_id: doctorId,
@@ -216,7 +219,7 @@ export const signout = (request, response, next) => {
     response
       .clearCookie("access_token")
       .status(200)
-      .json("User has been signed out");
+      .json({ success: true, message: "User has been signed out" });
   } catch (error) {
     next(errorHandler(500, "Error signing out."));
   }
@@ -225,8 +228,9 @@ export const signout = (request, response, next) => {
 export const updateUserById = async (request, response, next) => {
   const userId = request.params.id;
   try {
-    const { user_profile, username, password, email } = request.body;
+    const { username, password, email } = request.body;
     const updates = {};
+    const profileImage = request.imageUrl;
 
     if (username) {
       // Check if the user already exists
@@ -237,10 +241,10 @@ export const updateUserById = async (request, response, next) => {
       updates.username = username;
     }
 
-    if (user_profile) {
-      updates.user_profile = user_profile;
+    if (profileImage) {
+      updates.user_profile = profileImage;
     }
-    
+
     if (password) {
       if (password.length < 6) {
         return next(
@@ -279,8 +283,14 @@ export const updateUserById = async (request, response, next) => {
       "Account Update",
       "Your account information has been successfully updated. Welcome back to Mediclinic—where your health is our priority."
     );
-    response.status(200).json("User updated successfully.");
+    response.status(200).json({
+      success: true,
+      message: "User updated successfully.",
+      data: updateUser,
+    });
   } catch (error) {
+    console.log(error);
+
     next(errorHandler(500, "Error updating user"));
   }
 };

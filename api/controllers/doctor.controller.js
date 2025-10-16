@@ -107,7 +107,13 @@ export const updateDoctor = async (request, response, next) => {
       "Doctor Account Updated",
       `Your account has been successfully updated. Please review your updated information to ensure accuracy. If you have any questions or need further assistance, please contact our support team.`
     );
-    response.status(200).json(updatedDoctor);
+    response
+      .status(200)
+      .json({
+        success: true,
+        message: "Doctor updated successfully",
+        data: updatedDoctor,
+      });
   } catch (error) {
     console.log(error);
     next(errorHandler(500, "Error updating doctor"));
@@ -385,7 +391,11 @@ export const createDoctor = async (request, response, next) => {
         `A new doctor, ${doctor_firstName} ${doctor_lastName}, has been registered in ${department.department_name} department.`
       );
       // Respond with the new doctor data
-      response.status(201).json(savedDoctor);
+      response.status(201).json({
+        success: true,
+        message: "Doctor added successfully",
+        data: savedDoctor,
+      });
     } catch (rollError) {
       console.log(rollError);
       // Error occurred while creating role-specific data

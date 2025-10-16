@@ -11,15 +11,11 @@ import {
 
 const router = express.Router();
 
-router.get("/getPatients", verifyToken, getAllPatients);
-router.get("/getPatients/:id", verifyToken, getPatientById);
-router.post("/createPatient", verifyToken, createPatient);
-router.put("/getPatients/:id", verifyToken, updatePatient);
-router.delete("/getPatients/:id", verifyToken, deletePatient);
-router.get(
-  "/getPatients/appointmentDetails/:id",
-  verifyToken,
-  getPatientDetails
-);
+router.get("/get", verifyToken, getAllPatients);
+router.get("/get/:id", verifyToken, getPatientById);
+router.post("/create", verifyToken, createPatient);
+router.put("/update/:id", verifyToken, updatePatient);
+router.delete("/delete/:id", verifyToken, deletePatient);
+router.get("/appointmentDetails/:id", verifyToken, getPatientDetails);
 
 export default router;

@@ -10,10 +10,10 @@ import {
 
 const router = express.Router();
 
-router.get("/getDepartments", verifyToken, getAllDepartments);
-router.get("/getDepartments/:id", verifyToken, getDepartmentByID);
-router.post("/createDepartment", verifyToken, createDepartment);
-router.put("/getDepartments/:id", verifyToken, updateDepartment);
-router.delete("/getDepartments/:id", verifyToken, deleteDepartment);
+router.get("/get", verifyToken, getAllDepartments);
+router.get("/get/:id", verifyToken, getDepartmentByID);
+router.post("/create", verifyToken, createDepartment);
+router.put("/update/:id", verifyToken, updateDepartment);
+router.delete("/delete/:id", verifyToken, deleteDepartment);
 
 export default router;

@@ -12,15 +12,23 @@ import {
   updateUserById,
 } from "../controllers/auth.controller.js";
 import { verifyToken } from "../utils/verifyUser.js";
+import upload from "../utils/multer.js";
+import { uploadSingle } from "../utils/uploadImage.js";
 
 const router = express.Router();
 
 router.post("/login", login);
 router.post("/signup", signup);
 router.get("/getAdmins", verifyToken, getAdminUsers);
-router.get("/getUsers", verifyToken, getAllUsers);
-router.get("/getUsers/:id", verifyToken, getUserById);
-router.put("/update/:id", verifyToken, updateUserById);
+router.get("/get", verifyToken, getAllUsers);
+router.get("/get/:id", verifyToken, getUserById);
+router.put(
+  "/update/:id",
+  verifyToken,
+  upload.single("profileImage"),
+  uploadSingle,
+  updateUserById
+);
 router.put("/deactivate/:id", verifyToken, deactivateUser);
 router.put("/activate/:id", verifyToken, activateUser);
 router.delete("/delete/:id", verifyToken, deleteUser);

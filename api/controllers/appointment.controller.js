@@ -361,6 +361,7 @@ export const updateAppointment = async (request, response, next) => {
     if (!previousAppointment) {
       return next(errorHandler(404, "Appointment not found"));
     }
+    console.log("Current User:", currentUserId);
 
     const updatedAppointment = await Appointment.findByIdAndUpdate(
       appointmentId,
@@ -408,6 +409,9 @@ export const updateAppointment = async (request, response, next) => {
 
     // Fetch the doctor information
     const doctor = await Doctor.findById(doctor_id).populate("user_id");
+    console.log("Doctor ID: ", doctor_id);
+    console.log("Doctor: ", doctor);
+
     const doctorUserId = doctor.user_id._id;
 
     // Create notifications for both the admin,doctor and the patient

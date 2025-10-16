@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import authRoutes from "../api/routes/auth.route.js";
 import departmentRoutes from "../api/routes/department.route.js";
 import path from "path";
+import cors from "cors";
 import patientRoutes from "./routes/patients.route.js";
 import doctorRoutes from "./routes/doctor.route.js";
 import appointmentRoutes from "./routes/appointment.route.js";
@@ -29,6 +30,7 @@ const __dirname = path.resolve();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
 // Middleware to serve static files
 app.use("/images", express.static(path.join(__dirname, "public/images")));

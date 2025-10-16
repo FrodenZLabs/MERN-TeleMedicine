@@ -13,21 +13,13 @@ import {
 
 const router = express.Router();
 
-router.get("/getAppointments", verifyToken, getAllAppointments);
-router.get("/getAppointments/:id", verifyToken, getAppointmentByID);
-router.get(
-  "/getAppointments/doctor/:doctor_id",
-  verifyToken,
-  getAppointmentByDoctorID
-);
-router.get(
-  "/getAppointments/patient/:patient_id",
-  verifyToken,
-  getAppointmentByPatientID
-);
-router.post("/createAppointment", verifyToken, createAppointment);
-router.put("/getAppointments/:id", verifyToken, updateAppointment);
-router.delete("/getAppointments/:id", verifyToken, deleteAppointment);
+router.get("/get", verifyToken, getAllAppointments);
+router.get("/get/:id", verifyToken, getAppointmentByID);
+router.get("/doctor/:doctor_id", verifyToken, getAppointmentByDoctorID);
+router.get("/patient/:patient_id", verifyToken, getAppointmentByPatientID);
+router.post("/create", verifyToken, createAppointment);
+router.put("/update/:id", verifyToken, updateAppointment);
+router.delete("/delete/:id", verifyToken, deleteAppointment);
 router.get("/getAllReports", verifyToken, getAllReports);
 
 export default router;

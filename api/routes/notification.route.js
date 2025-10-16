@@ -11,19 +11,11 @@ import {
 
 const router = express.Router();
 
-router.get("/getNotifications/:id", verifyToken, getNotificationById);
-router.get(
-  "/getNotifications/user/:user_id",
-  verifyToken,
-  getNotificationsByUserId
-);
-router.put("/getNotifications/:id", verifyToken, markNotificationAsViewed);
-router.put("/markAllAsViewed/:user_id", verifyToken, markAllNotificationsAsViewed);
-router.delete("/deleteNotification/:id", verifyToken, deleteNotificationById);
-router.delete(
-  "/deleteAllNotifications/:user_id",
-  verifyToken,
-  deleteNotificationsByUserId
-);
+router.get("/get/:id", verifyToken, getNotificationById);
+router.get("/user/:user_id", verifyToken, getNotificationsByUserId);
+router.put("/mark/:id", verifyToken, markNotificationAsViewed);
+router.put("/markAll/:user_id", verifyToken, markAllNotificationsAsViewed);
+router.delete("/delete/:id", verifyToken, deleteNotificationById);
+router.delete("/deleteAll/:user_id", verifyToken, deleteNotificationsByUserId);
 
 export default router;

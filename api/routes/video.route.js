@@ -11,23 +11,15 @@ import {
 
 const router = express.Router();
 
-router.get("/getVideoConsultations", verifyToken, getAllVideoConsultations);
-router.get("/getVideoConsultations/:id", verifyToken, getVideoConsultationById);
+router.get("/get", verifyToken, getAllVideoConsultations);
+router.get("/get/:id", verifyToken, getVideoConsultationById);
+router.get("/doctor/:doctor_id", verifyToken, getVideoConsultationsByDoctorId);
 router.get(
-  "/getVideoConsultations/doctor/:doctor_id",
-  verifyToken,
-  getVideoConsultationsByDoctorId
-);
-router.get(
-  "/getVideoConsultations/patient/:patient_id",
+  "/patient/:patient_id",
   verifyToken,
   getVideoConsultationsByPatientId
 );
-router.post("/createVideoConsultation", verifyToken, createVideoConsultation);
-router.put(
-  "/getVideoConsultations/update/:id",
-  verifyToken,
-  updateVideoConsultation
-);
+router.post("/create", verifyToken, createVideoConsultation);
+router.put("/update/:id", verifyToken, updateVideoConsultation);
 
 export default router;

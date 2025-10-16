@@ -12,13 +12,13 @@ import {
 
 const router = express.Router();
 
-router.get("/getDoctors", verifyToken, getAllDoctors);
-router.get("/getDoctors/doctor/:id", verifyToken, getDoctorById);
-router.post("/createDoctor", verifyToken, createDoctor);
-router.put("/getDoctors/:id", verifyToken, updateDoctor);
-router.delete("/getDoctors/:id", verifyToken, deleteDoctor);
+router.get("/get", verifyToken, getAllDoctors);
+router.get("/get/:id", verifyToken, getDoctorById);
+router.post("/create", verifyToken, createDoctor);
+router.put("/update/:id", verifyToken, updateDoctor);
+router.delete("/delete/:id", verifyToken, deleteDoctor);
 router.get(
-  "/getDoctors/department/:department_id",
+  "/get/department/:department_id",
   verifyToken,
   getDoctorsByDepartment
 );
