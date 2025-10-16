@@ -36,15 +36,6 @@ app.use(
   })
 );
 
-// Serve frontend build in production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "frontend/dist")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-  });
-}
-
 // Routes
 app.use("/mediclinic/auth", authRoutes);
 app.use("/mediclinic/department", departmentRoutes);
@@ -55,6 +46,15 @@ app.use("/mediclinic/video", videoRoutes);
 app.use("/mediclinic/payment", paymentRouter);
 app.use("/mediclinic/prescription", prescriptionRouter);
 app.use("/mediclinic/notification", notificationRouter);
+
+// Serve frontend build in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 
