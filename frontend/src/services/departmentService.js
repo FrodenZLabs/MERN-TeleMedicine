@@ -20,7 +20,7 @@ export const getDepartments = async ({
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -35,7 +35,7 @@ export const getDepartmentsByID = async (departmentID) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -51,7 +51,7 @@ export const addDepartment = async (formData) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -67,7 +67,7 @@ export const updateDepartment = async (departmentID, formData) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -82,7 +82,7 @@ export const deleteDepartment = async (departmentID) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }

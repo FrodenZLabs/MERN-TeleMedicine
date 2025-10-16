@@ -21,7 +21,7 @@ export const getPatients = async ({
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -34,7 +34,7 @@ export const getPatientsByID = async (patientID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -48,7 +48,7 @@ export const addPatient = async (formData) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -62,7 +62,7 @@ export const updatePatient = async (patientID, formData) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -75,7 +75,7 @@ export const deletePatient = async (patientID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }

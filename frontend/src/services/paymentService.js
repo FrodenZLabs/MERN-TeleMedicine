@@ -10,7 +10,7 @@ export const getPayments = async (page = 1, limit = 10) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -29,7 +29,7 @@ export const getPaymentsByPatientID = async (
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -45,7 +45,7 @@ export const addPayment = async (formData) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }

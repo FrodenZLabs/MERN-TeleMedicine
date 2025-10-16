@@ -10,7 +10,7 @@ export const getVideoConsultations = async (page = 1, limit = 10) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -25,7 +25,7 @@ export const getVideoConsultationsByID = async (videoConsultationID) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -44,7 +44,7 @@ export const getVideoConsultationsByDoctorID = async (
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -63,7 +63,7 @@ export const getVideoConsultationsByPatientID = async (
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -79,7 +79,7 @@ export const addVideoConsultations = async (formData) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -98,7 +98,7 @@ export const updateVideoConsultations = async (
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }

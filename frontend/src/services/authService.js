@@ -9,7 +9,7 @@ export const loginUser = async (formData) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -23,7 +23,7 @@ export const logoutUser = async () => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message || "Error logging out.";
   }
@@ -36,7 +36,7 @@ export const registerUser = async (formData) => {
       formData
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -58,7 +58,7 @@ export const getUsers = async ({ searchData = {}, page = 1, limit = 10 }) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -71,7 +71,7 @@ export const getUsersByID = async (userID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -85,7 +85,7 @@ export const Activate = async (userID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message || "Error activating user.";
   }
@@ -99,7 +99,7 @@ export const Deactivate = async (userID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message || "Error deactivating user.";
   }
@@ -116,7 +116,7 @@ export const updateUser = async (userID, formData) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message || "Error updating the user.";
   }

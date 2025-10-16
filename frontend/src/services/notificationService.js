@@ -8,7 +8,7 @@ export const getNotificationsByID = async (notificationID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -21,7 +21,7 @@ export const getNotificationsByUserID = async (userID, page, limit) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -35,7 +35,7 @@ export const markNotification = async (notificationID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -49,7 +49,7 @@ export const markAllNotifications = async (userID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -62,7 +62,7 @@ export const deleteNotification = async (notificationID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -75,7 +75,7 @@ export const deleteAllNotifications = async (userID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }

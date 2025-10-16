@@ -15,7 +15,7 @@ export const getPrescriptions = async ({ page = 1, limit = 10 }) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -30,7 +30,7 @@ export const getPrescriptionsByID = async (prescriptionID) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -45,7 +45,7 @@ export const getPrescriptionsByAppointmentID = async (appointmentID) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -60,7 +60,7 @@ export const getPrescriptionsByDoctorID = async (doctorID) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -75,7 +75,7 @@ export const getPrescriptionsByPatientID = async (patientID) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -91,7 +91,7 @@ export const addPrescription = async (formData) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -107,7 +107,7 @@ export const updatePrescription = async (prescriptionID, formData) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -122,7 +122,7 @@ export const deletePrescription = async (prescriptionID) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }

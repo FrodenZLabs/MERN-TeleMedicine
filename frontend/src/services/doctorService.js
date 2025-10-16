@@ -16,7 +16,7 @@ export const getDoctors = async ({ searchTerm = "", page = 1, limit = 10 }) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -29,7 +29,7 @@ export const getDoctorsByID = async (doctorID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -42,7 +42,7 @@ export const getDoctorsByDepartmentID = async (departmentID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -56,7 +56,7 @@ export const addDoctor = async (formData) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -70,7 +70,7 @@ export const updateDoctor = async (doctorID, formData) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -83,7 +83,7 @@ export const deleteDoctor = async (doctorID) => {
       { withCredentials: true }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }

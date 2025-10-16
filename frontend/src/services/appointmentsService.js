@@ -7,7 +7,7 @@ export const getAppointments = async (page = 1, limit = 10) => {
       `${API_URL}/mediclinic/appointment/get?page=${page}&limit=${limit}`,
       { withCredentials: true }
     );
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw new Error(
       error.response?.data?.message || "Failed to fetch appointments."
@@ -24,7 +24,7 @@ export const getAppointmentsByID = async (appointmentID) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -40,7 +40,7 @@ export const getAppointmentsByPatientID = async (
       `${API_URL}/mediclinic/appointment/patient/${patientID}?page=${page}&limit=${limit}`,
       { withCredentials: true }
     );
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw new Error(
       error.response?.data?.message || "Failed to fetch patient appointments."
@@ -58,7 +58,7 @@ export const getAppointmentsByDoctorID = async (
       `${API_URL}/mediclinic/appointment/doctor/${doctorID}?page=${page}&limit=${limit}`,
       { withCredentials: true }
     );
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw new Error(
       error.response?.data?.message || "Failed to fetch doctor appointments."
@@ -76,7 +76,7 @@ export const addAppointment = async (formData) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -92,7 +92,7 @@ export const updateAppointment = async (appointmentID, formData) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
@@ -107,7 +107,7 @@ export const deleteAppointment = async (appointmentID) => {
       }
     );
 
-    return response.data;
+    return response?.data || "";
   } catch (error) {
     throw error.response?.data?.message;
   }
