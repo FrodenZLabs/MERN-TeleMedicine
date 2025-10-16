@@ -1,49 +1,114 @@
-# Telemedicine App
+# 🏥 MediClinic – Telemedicine Web Application
 ## Introduction
-Welcome to the Telemedicine App repository! This application aims to provide a seamless experience for patients and doctors to manage appointments, consultations, and medical records online. Built with the MERN stack (MongoDB, Express.js, React, Node.js), this project leverages modern web development technologies to deliver a robust telemedicine solution.
+MediClinic is a modern Telemedicine Web Application designed to bridge the gap between patients and healthcare providers through a seamless digital experience. The platform enables patients to consult doctors remotely, schedule appointments, manage prescriptions, and access medical records — all in one place.
 
-## Features
-- **User Authentication**: Secure login and registration for patients and doctors.
-- **Appointment Management**: Schedule, view, and manage appointments.
-- **Consultation Requests**: Manage and view consultation requests.
-- **Notification System**: Real-time notifications for appointments and consultations.
-- **Department Management**: Manage medical departments and associated doctors.
-- **User Profiles**: Detailed profiles for patients and doctors.
-- **Prescription Management**: Create and update prescriptions.
-- **Responsive Design**: Optimized for both desktop and mobile devices.
+## 📸 Preview
 
-## Installation
-### Prerequisites
-- Node.js
-- MongoDB
-- npm or yarn
+## ✨ Features
+### 👨‍⚕️ For Doctors
+- Secure login & profile management
+- Manage patient appointments
+- Accept or cancel consultation requests
+- Conduct video consultations
+- View patient medical history
+
+### 🧑‍🤝‍🧑 For Patients
+- Register, login, and manage profiles
+- Search for doctors by specialty or name
+- Book appointments and video consultations
+- Receive email/notification reminders
+- View consultation history
+
+### 🧑‍💼 For Admins
+- Manage users (patients, doctors, admins)
+- Approve new doctors
+- Monitor system activities
+- Generate analytics reports
+
+## 🧰 Tech Stack
+<table>
+  <tr>
+    <th>Layer</th>
+    <th>Technology</th>
+  </tr>
+  <tr>
+    <td><strong>Frontend</strong></td>
+    <td>React.js, Tailwind CSS, Flowbite, Axios</td>
+  </tr>
+  <tr>
+    <td><strong>Backend</strong></td>
+    <td>Node.js, Express.js</td>
+  </tr>
+  <tr>
+    <td><strong>Database</strong></td>
+    <td>MongoDB (Mongoose ODM)</td>
+  </tr>
+  <tr>
+    <td><strong>Authentication</strong></td>
+    <td>JWT (JSON Web Tokens), bcrypt.js</td>
+  </tr>
+  <tr>
+    <td><strong>Cloud Storage</strong></td>
+    <td>Cloudinary (for user/doctor profile images)</td>
+  </tr>
+  <tr>
+    <td><strong>Video Consultation</strong></td>
+    <td>Google Meet</td>
+  </tr>
+  <tr>
+    <td><strong>Notifications</strong></td>
+    <td>Real-time with Socket.IO</td>
+  </tr>
+  <tr>
+    <td><strong>Deployment</strong></td>
+    <td>Render</td>
+  </tr>
+</table>
 
 
-### Steps
-1. Clone the Repository
-```sh
-git clone https://github.com/Dispenser254/Telemedicine-App.git
-cd Telemedicine-App
+## ⚙️ Installation Guide
+### 1️⃣ Clone the repository
+``` bash
+git clone https://github.com/FrodenZLabs/MERN-TeleMedicine.git
+cd mediclinic-telemedicine
 ```
 
-2. Install Dependencies
-```sh
+### 2️⃣ Setup the Backend
+``` bash
 npm install
 ```
-or
-```sh
-yarn install
+
+### 3️⃣ Setup the Frontend
+``` bash
+cd ../frontend
+npm install
 ```
 
-3. Set Up Environment Variables
+### 4️⃣ 🔐 Set Up Environment Variables
 Create a .env file in the root directory and add the following variables:
 ```sh
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-PORT=your_preferred_port
+JWT_SECRET="jwt_secret"
+PORT=8000
+MONGO_URL = "mongo_url"
+STRIPE_PRIVATE_KEY="private_key"
+CLOUDINARY_CLOUD_NAME="cloud_name"
+CLOUDINARY_API_KEY="api_key"
+CLOUDINARY_API_SECRET="api_secret"
 ```
-4. Run the Application
+
+Create a .env file in the frontend directory and add the following variables for stripe payment:
 ```sh
+VITE_STRIPE_PUBLIC_KEY="public_key"
+```
+### 5️⃣ 🚀 Running the Application
+Run the Backend in the root directory
+``` bash
+npm run dev
+```
+
+Run the Frontend
+``` bash
+cd frontend
 npm run dev
 ```
 
@@ -61,17 +126,6 @@ Telemedicine-App/
 └── README.md        # Project documentation
 ```
 
-## Architecture
-#### Front-End
-- **React**: A JavaScript library for building user interfaces.
-- **Flowbite**: A library of prebuilt components for Tailwind CSS.
-- **Redux**: A state management tool for JavaScript apps.
-#### Back-End
-- **Node.js**: JavaScript runtime built on Chrome's V8 JavaScript engine.
-- **Express.js**: A web application framework for Node.js.
-- **MongoDB**: A NoSQL database for storing user and appointment data.
-- **Mongoose**: An ODM for MongoDB and Node.js.
-
 ## Contributing
 1. Fork the repository.
 2. Create a new branch (**git checkout -b feature-branch**).
@@ -79,10 +133,13 @@ Telemedicine-App/
 4. Push to the branch (**git push origin feature-branch**).
 5. Create a new Pull Request.
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## 📄 License
+This project is licensed under the MIT License.
+Feel free to use and modify it for personal or educational purposes.
 
-## Contact
+## 👨‍💻 Developed By
+Stephen Kibe
+Full-Stack Developer | MERN | DevOps | Cloud Integrations
 For any questions or inquiries, please contact:
 
 - Email: **stevensonkibs55@gmail.com**
