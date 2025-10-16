@@ -2,7 +2,7 @@
   "name": "telemedicine-app",
   "version": "1.0.0",
   "description": "a telemedicine web app will enable users to find doctors, book appointments, and have consultations using the MERN stack (MongoDB, Express.js, React, Node.js). .",
-  "main": "index.js",
+  "main": "api/index.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon api/index.js",
