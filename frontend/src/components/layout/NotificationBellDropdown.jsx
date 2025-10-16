@@ -107,7 +107,7 @@ const NotificationBellDropdown = () => {
             Notifications
           </div>
           <div className="divide-y divide-gray-200">
-            {notifications.map((notification) => (
+            {notifications?.map((notification) => (
               <div
                 onClick={() => {
                   setNotificationId(notification._id);
